@@ -1,0 +1,62 @@
+body{
+    background-color: white;
+}
+
+.about-container p {
+    font-family: 'Verdana', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.about-container p:hover {
+    border-color: #000;
+    background-color: #f9f9f9;
+}
+
+.slogan p{
+    padding-top: 15px;
+    text-align: center;
+}
+.text-describ p{
+    padding-top: 15px;
+   text-align: center;
+}
+
+/* POUR LES LISTES  */
+
+/* Liste avec un design plat et bordure colorée */
+ul.list {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    background-color: #fafafa;
+    font-family: 'Verdana', sans-serif;
+    color: #333;
+}
+
+/* Élément avec bordure colorée et espacement */
+ul.list li {
+    font-size: 16px;
+    padding: 10px;
+    border-left: 5px solid #3498db;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Survol avec une légère animation */
+ul.list li:hover {
+    background-color: #e6f7ff;
+    transform: scale(1.03);
+}
+
+/* Dernier élément sans bordure */
+ul.list li:last-child {
+    margin-bottom: 0;
+}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+    <div class="video-background" id="destop">
+        <video src="{{asset('_template/background/27019-361107952_large.mp4')}}" autoplay loop muted>
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
+    </div>
+
+    <div class="video-background" id="mobile">
+        <video src="{{asset('_template/background/5723045-uhd_2160_4096_25fps.mp4')}}" autoplay loop muted>
+            <source src="{{asset('video.webm')}}" type="video/webm">
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
+    </div>
+
+    <section class="main-index">
+        <h1 class="fade-in">Bienvenue sur la Plateforme de la Grande Fammile RASERE</h1>
+        <p class="fade-in">Un lieu d'échange, de ressources et d'entraide pour ta réussite académique</p>
+        <a href="{{ path('app_accueil') }}" class="btn-explore">Explorer</a>
+    </section>
+{% endblock %}

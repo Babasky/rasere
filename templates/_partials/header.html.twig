@@ -1,0 +1,55 @@
+<header>
+	<div class="nav-container">
+		<h1 class="logo">RASSEMBLEURS-SECOURISTES-REFORMATEURS</h1>
+		<ul class="menu" id="menu">
+			<li>
+				<a href="{{path('app_accueil')}}" id="acceuil-liens">Acceuil</a>
+			</li>
+			<li>
+				<a href="{{path('app_about')}}" id="aprops-liens">A Propos</a>
+			</li>
+			<li>
+				<a href="comes.html" id="ressources-liens">Ressources</a>
+			</li>
+			<li>
+				<a href="forum.html" id="forum">Forum</a>
+			</li>
+			<li>
+				<a href="{{path('app_login')}}">Administration</a>
+			</li>
+			
+		</ul>
+
+	</div>
+	<!-- Mobile Menu  -->
+	<div class="mobile">
+		<h2>RASERE</h2>
+		<div class="hamburger" id="hamburger">
+			<i class="fas fa-bars"></i>
+			<!--burger icon -->
+		</div>
+		<ul class="mobile-menu" id="mobile-menu">
+			<li>
+				<a href="{{path('app_accueil')}}">Acceuil</a>
+			</li>
+			<li>
+				<a href="{{path('app_about')}}" id="aprops-liens">A Propos</a>
+			</li>
+			<li>
+				<a href="{{path('app_ressource')}}">Ressources</a>
+			</li>
+			<li>
+				<a href="forum.html">Forum</a>
+			</li>
+			{% if app.user %}
+				<li>
+					<a href="{{path('app_logout')}}">Déconnexion</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{path('app_login')}}">Administration</a>
+				</li>
+			{% endif %}
+		</ul>
+	</div>
+</header>

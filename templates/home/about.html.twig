@@ -1,0 +1,203 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block header %}
+	{% include "_partials/header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+	<section class="about-container">
+		<p>
+		La Grande Famille des RASSEMBLEURS, SECOURISTES et REFORMATEURS
+		Née le 10 mai 1996, sur la colline de Badalabougou, cette famille s'est formée de la fusion des RASSEMBLEURS, des SECOURISTES et des REFORMATEURS. 
+		Unis par un idéal commun, chaque groupe apportait sa contribution : les RASSEMBLEURS fédéraient les étudiants, 
+		les SECOURISTES venaient en aide aux plus démunis, et les REFORMATEURS oeuvraient pour l'amélioration pédagogique 
+		et infrastructurelle.
+
+		C'est ainsi qu'est née cette grande famille qui, loin de toute hiérarchie, prône l'égalité, le partage et la paix. 
+		Sans père ni mère, mais unie par des liens fraternels, elle est ouverte à tous, sans distinction de sexe, 
+		de race, d'ethnie ou de nationalité.
+		
+	Cette communauté est également un creuset de formation, donnant naissance à des leaders incontestés
+	dans le domaine politique et national. L'esprit des Raseriens perdure à travers les générations, avec pour devise :
+	<span class="slogan">"La Parole n'est que la parole, la Puissance réside dans l'Action."</span>
+	Son symbole, noir et blanc, illustre la dualité de la vie : le noir pour le deuil et la fin de tout, le blanc pour 
+			la paix, la douceur, et la clarté.
+
+			Fiers d'être Raseriens, cette famille continue de grandir et de se renforcer chaque jour.
+		</p>
+		<p>
+			Dépuis sa création, le RASERE a eu {{secretaires | length}} Sécretaires Généraux qui ont présidé à la tête de l"AEEM:
+		</p>
+		<ul class="list">
+			{% for secretaire in secretaires %}
+				<li>{{ secretaire.year }}: {{ secretaire.name }}</li>
+				
+			{% endfor %}
+		</ul>
+		<p>
+			Le RASERE, né de la fusion des RASSEMBLEURS, SECOURISTES et REFORMATEURS, incarne l'unité, 
+			l'action et la persévérance. Chaque début est une promesse de changement, chaque fin, 
+			un nouveau commencement. Cette grande famille, forte de ses valeurs de partage, 
+			de paix et de solidarité, continue de se réinventer, guidée par l'espoir d'un avenir meilleur.
+		</p>
+		<p>
+			Le RASERE, au-delà de son identité collective, est également incarné par son coordinateur et son instance 
+			exécutive : la Coordination. Cette équipe dirigeante, composée d'hommes justes, valeureux et courageux 
+			appelés coordinateurs, mène avec intégrité les actions de la grande famille. Leur rôle est de guider, 
+			de prendre des décisions et de faire avancer les idéaux du RASERE, toujours dans le respect de ses 
+			valeurs fondatrices.
+		</p>
+		<ul class="list">
+			{% for coordinateur in coordinateurs %}
+				<li>{{ coordinateur.year }}: {{ coordinateur.name }}</li>
+			{% endfor %}
+		</ul>
+		<p>
+			Ainsi, la Grande Famille des RASSEMBLEURS-SECOURISTES-REFORMATEURS se compose de plusieurs sous-groupes, 
+			            chacun apportant une contribution unique à l'unité et à la force de la famille. Ces sous-groupes, 
+			            chacun avec ses propres missions et objectifs, travaillent de concert pour maintenir les idéaux 
+			            de solidarité, de partage et de progrès.
+		</p>
+	</section>
+	<section
+		class="grouplist">
+		{% for subgroup in subgroups %}
+			<div class="subgroup">
+				<h2 onclick="toggleContent({{ loop.index }})">{{ subgroup.name }}<span id="toggle-icon-{{ loop.index }}">&#x2193;</span>
+				</h2>
+				<div class="describ-subgroup" id="describ-subgroup-{{ loop.index }}">
+					<div class="logo-subgroup">
+						<img src="{{ asset('/uploads/subgroup/' ~ subgroup.logo) }}" alt="Logo de la Coordination">
+					</div>
+					<div class="text-describ">
+						<p>
+							{{ subgroup.description|raw }}
+						</p>
+					</div>
+
+					<div class="dirigeants">
+						<div class="chef">
+						{% if subgroup.membres is defined and subgroup.membres is not empty %}
+                        {% for member in subgroup.membres %}
+                            <!-- Informations sur le chef -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <img src="{{ asset('/uploads/membre/' ~ member.photo)}}" alt="Photo de profil" class="profile-image" onclick="openModal(this)">
+                                </div>
+                                <div class="card-body">
+                                    <h2>{{ member.firstname }} {{ member.lastname }}</h2>
+                                    <p>{{ member.poste }}</p>
+                                    <p>{{ member.fonction }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="https://wa.me/{{ member.phone }}" target="_blank">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </a>
+                                    <a href="tel:{{ member.phone }}">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </a>
+                                    <a href="sms:{{ member.phone }}">
+                                        <i class="fa-solid fa-comment-sms"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+						{% else %}
+							<p>Aucun membre trouvé pour ce sous-groupe.</p>
+						{% endif %}
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+		{% endfor %}
+
+		<!-- Modale pour afficher l'image en grand -->
+		<div id="imageModal" class="modal">
+			<span class="close" onclick="closeModal()"></span>
+			<img class="modal-content" id="imgInModal">
+			<div id="caption"></div>
+		</div>
+	</section>
+	<section class="about-container">
+		<p>
+			<i>Parole et Action
+			</i>
+			<br>
+			"Parole, action, parole, action" — un slogan qui résume 28 ans d'engagement au service des étudiants 
+			        en médecine, odontostomatologie et pharmacie. Chaque année, des actions concrètes ont marqué notre parcours. 
+			        Sur le plan pédagogique, nous avons obtenu la conservation des bourses pour les étudiants de 3e et 4e année, 
+			        introduit les crédits universitaires, obtenu des dérogations pour les étudiants en médecine et pharmacie, 
+			        et permis aux étudiants non reçus au numerus clausus de s'inscrire dans d'autres écoles comme l'ENA ou la FAST. Nous avons aussi doublé le quota du numerus clausus et lutté contre les grèves des professeurs.
+			
+			        Sur le plan matériel et infrastructurel, nous avons construit le complexe sportif Massa SANOGO, créé l'espace
+			        BOUGALON, obtenu un parking moto, négocié la création d'un restaurant universitaire de 2000 places, 
+			        acquis trois cars de transport et amélioré les conditions de vie à l'internat avec de nouveaux lits,
+			        matelas, ventilateurs et équipements divers.
+			
+			        Nous offrons également des cours d'initiation aux néo-bacheliers et un suivi continu tout au long 
+			        de leur parcours universitaire, à travers des cours en ligne et en présentiel.
+
+			<i>Pour toute information, contactez les responsables du site le plus proche.</i>
+
+		</p>
+	</section>
+	<section>
+		<!-- ==============================SITE LBAD=================================== -->
+		<div class="subgroup">
+			{% for site in sites %}
+				<h2 onclick="toggleContent({{ loop.index + 7 }})">
+					{{ site.name }}<span id="toggle-icon-{{ loop.index + 7 }}">&#x2193;</span>
+				</h2>
+				<div class="describ-subgroup" id="describ-subgroup-{{ loop.index + 7 }}">
+					<div class="text-describ">
+						<p> {{ site.description | raw }} </p>
+					</div>
+					<div class="dirigeants">
+						<div class="chef">
+							{% if site.resposites is defined and site.resposites is not empty %}
+								{% for responsable in site.resposites %}
+									<div class="card">
+										<div class="card-header">
+											<img src="picture/leaders/1743800076977.jpg" alt="Photo de profil" class="profile-image" onclick="openModal(this)">
+										</div>
+										<div class="card-body">
+											<h2> {{responsable.firstnam}} {{responsable.lastname}} </h2>
+											<p> {{responsable.poste}} </p>
+											<p>{{responsable.fonction}}</p>
+										</div>
+										<div class="card-footer">
+											<a href="https://wa.me/{{ responsable.phone }}" target="_blank">
+												<i class="fa-brands fa-whatsapp"></i>
+											</a>
+
+											<a href="tel:{{ responsable.phone }}">
+												<i class="fa-solid fa-phone"></i>
+											</a>
+
+											<a href="sms:{{ responsable.phone }}">
+												<i class="fa-solid fa-comment-sms"></i>
+											</a>
+										</div>
+									</div>
+								{% endfor %}
+							{% endif %}
+							
+						</div>
+
+						
+
+					</div>
+				</div>
+				
+			{% endfor %}
+		</div>
+
+
+	</section>
+{% endblock %}

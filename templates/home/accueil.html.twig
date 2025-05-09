@@ -1,0 +1,40 @@
+{% extends "_base.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <section class="acceuil-container">
+        {% if accueil is defined and accueil is not null %}
+            <div>
+                <h2>
+                    {{ accueil.title | raw }}
+                </h2>
+				<p class="text">
+					{{ accueil.description | raw }}
+				</p>
+            </div>
+
+            <div class="buttons-container">
+                <button class="animated-btn discover">
+                    <a href="{{ path('app_about') }}">Découvrir</a>
+                </button>
+                <button class="animated-btn resources">
+                    <a href="{{path('app_ressource')}}">Ressources</a>
+                </button>
+                <button class="animated-btn forum">
+                    <a href="forum.html">Forum</a>
+                </button>
+            </div>
+
+            <footer>
+                <p>
+                    <i>{{ accueil.slogan }}</i>
+                </p>
+            </footer>
+        {% else %}
+            <div class="error-message">
+                <h1>Aucune information pour le moment</h1>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

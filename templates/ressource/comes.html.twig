@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ressource{% endblock %}
+{% block header %}
+    {% include "_partials/header.html.twig" %}
+{% endblock %}
+{% block body %}
+    <section class="comes-text">
+        {% if ressource is defined and ressource is not null %}
+            <h2>{{ressource.title}}</h2> 
+            <p>
+               {{ressource.description|raw}}
+            </p>
+        {% endif %}
+    </section>
+    <section>
+        <!-- ========================Anatomie================================ -->
+    <div class="subgroup">
+        {% for speciality in specialities %}
+            <h2 onclick="toggleContent({{loop.index + 8}})">{{speciality.name}}<span id="toggle-icon-{{loop.index + 8}}">&#x2193;</span></h2>
+    
+            <div class="describ-subgroup" id="describ-subgroup-{{loop.index + 8}}">
+            
+                <div class="dirigeants">
+                    <div class="chef">
+                    	{% if speciality.membres is defined and speciality.membres is not empty %}
+                            {% for membre in speciality.membres %}
+                                <div class="card">
+                                    <div class="card-header">
+                                        <img src="picture/comes/1743639743846.jpg" alt="Photo de profil" class="profile-image" onclick="openModal(this)">
+                                    </div>
+                                    <div class="card-body">
+                                        <h2> {{membre.firstname}} {{membre.lastname}}</h2>
+                                        <p>{{membre.poste}}</p>
+                                        <p>{{membre.fonction}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="https://wa.me/{{membre.phone}}" target="_blank"> <i class="fa-brands fa-whatsapp"></i></a>
+                                        
+                                        <a href="tel:+223{{membre.phone}}"><i class="fa-solid fa-phone"></i></a>
+
+                                        <a href="sms:+223{{membre.phone}}"><i class="fa-solid fa-comment-sms"></i></a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <!-- Informations sur le chef -->
+                    </div>
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

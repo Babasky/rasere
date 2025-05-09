@@ -1,0 +1,1078 @@
+body {
+    /* background-color: #A3C8E1; */
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #2980b9;  /* Bleu clair */
+    padding: 20px;
+    color: white;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.mobile{
+    display: none;
+}
+header h1 {
+    color: white;
+}
+
+.mobile h2{
+    font-family: 'el messiri';
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.logo {
+    font-size: 20px;
+    font-family: 'Antic Didone', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    background-color: white;  /* Gris clair pour mobile */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    animation: slideIn 0.3s ease-out;
+    z-index: 100; /* Pour s'assurer que le menu s'affiche au-dessus des autres éléments */
+}
+
+.mobile-menu li {
+    padding: 15px;
+}
+
+.mobile-menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Animation Underline */
+.menu li a {
+    position: relative;
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+
+.menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.menu li a:hover::after {
+    width: 100%;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+@media screen and (max-width: 660px) {
+    header{
+        padding: 0;
+    }
+    .mobile{
+        display: flex;
+        justify-content: space-between; /* Espacement entre le titre et l'icône */
+        align-items: center; 
+        padding: 0;
+        margin: 0;
+        width: 100%; /* Le header occupe toute la largeur */
+    }
+
+    .mobile h2 {
+        margin-left: 10%;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .hamburger {
+        padding: 10px;
+        cursor: pointer;
+        font-size: 30px;
+    } 
+
+    .nav-container h1 {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .mobile-menu {
+        position: absolute;
+    }
+}
+
+/* Style de la bannière */
+.main-index {
+    position: relative;
+    height: 100vh; /* Hauteur de la bannière = 100% de la hauteur de l'écran */
+     background-image: url('/picture/forum/IMG-20250312-WA0006.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); 
+}
+
+/* Texte principal */
+.main-index h1 {
+    font-size: 3rem; /* Taille de la police pour le titre */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner du relief */
+}
+
+/* Sous-titre */
+.main-index p {
+    font-size: 1.5rem;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 30px;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* Bouton d'exploration */
+.btn-explore {
+    padding: 15px 30px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+}
+
+.btn-explore:hover {
+    background-color: #2980b9; /* Couleur plus foncée au survol */
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+    .main-index h1 {
+        font-size: 2.5rem; /* Taille de police réduite pour les écrans plus petits */
+    }
+
+    .main-index p {
+        font-size: 1.1rem; /* Réduction de la taille du texte */
+    }
+
+    .btn-explore {
+        font-size: 1rem; /* Réduction de la taille du bouton */
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-index h1 {
+        font-size: 2rem; /* Taille de police encore plus petite pour les petits écrans */
+    }
+
+    .main-index p {
+        font-size: 1rem; /* Réduction supplémentaire pour les petits écrans */
+    }
+
+    .btn-explore {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+
+/* Animation de fade-in */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 5s forwards; /* L'animation dure 2 secondes */
+}
+
+/* Définir l'animation de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsivité : pour les petits écrans (tablettes) */
+@media (max-width: 768px) {
+    .fade-in {
+        font-size: 2.5rem; /* Ajuste la taille du texte */
+    }
+}
+
+/* Responsivité : pour les très petits écrans (mobiles) */
+@media (max-width: 480px) {
+    .fade-in {
+        font-size: 2rem; /* Ajuste la taille du texte */
+    }
+}
+
+
+#mobile{
+    display: none;
+}
+/* 2. Style pour l'élément contenant la vidéo */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;  /* Remplir toute la hauteur de l'écran */
+    overflow: hidden;
+    z-index: -1;  /* Placer la vidéo derrière le contenu */
+}
+
+/* 3. Style pour la vidéo */
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transform: translate(-50%, -50%); 
+}
+
+@media (max-width: 768px) {
+    #destop{
+        display: none;
+    }
+
+    #mobile{
+        display: block;
+    }
+
+    .video-background video {
+        width: 100%;
+        height: 100%;
+    }
+} 
+
+
+
+/* Conteneur principal du texte */
+.acceuil-container {
+    text-align: center; 
+    padding-top: 50px; 
+    width: 100%;
+    height: 100%;
+    margin: 0 auto; 
+}
+
+/* Titre animé */
+.acceuil-container h2 {
+    font-size: 1.7em;
+    line-height: 1.2em;
+    margin-bottom: 20px; /* Un peu d'espace sous le titre */
+}
+
+/* Paragraphe */
+.text {
+    line-height: 1.7rem;
+    font-size: 1.2rem;
+    padding-top: 0px;
+}
+
+/* Responsivité pour tablettes et petits écrans */
+@media (max-width: 1024px) { /* Pour les tablettes et iPads */
+    .home-container {
+        padding-top: 80px; /* Un peu plus d'espace en haut pour les tablettes */
+    }
+}
+
+@media (max-width: 768px) { /* Pour les tablettes en mode portrait et les petits écrans */
+    .acceuil{
+        background-image: url("/background/IMG-20250409-WA0006.jpg");
+        background-position: center 100px;
+    }
+    .acceuil-container {
+        padding-top: 60px; /* Espacement modéré pour les tablettes */
+    }
+    .acceuil-container h2 {
+        font-size: 1.6em;
+    }
+    .animated-text {
+        font-size: 1.2em;
+    }
+    .text {
+        line-height: 1.2em;
+        padding: 0 3px;
+    }
+}
+
+@media (max-width: 480px) { /* Pour les smartphones */
+    .acceuil-container {
+        padding-top: 10px; /* Réduire l'espacement en haut pour les smartphones */
+    }
+    .acceuil-container h2 {
+        font-size: 1.4em;
+    }
+}
+
+/* ======================BOUTTON ACCEUIL==================== */
+
+/* Conteneur principal des boutons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.buttons-container a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Animation de l'apparition des boutons de gauche à droite */
+.buttons-container .animated-btn {
+    opacity: 0; /* Commence invisible */
+    transform: translateX(-30px); /* Commence décalé à gauche */
+    animation: slideIn 1s ease-out forwards;
+}
+
+/* Animation de glissement et apparition des boutons */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Délai d'animation pour chaque bouton */
+.buttons-container .discover {
+    animation-delay: 0.2s; /* Premier bouton, apparaît après 0.2s */
+}
+
+.buttons-container .resources {
+    animation-delay: 0.4s; /* Deuxième bouton, apparaît après 0.4s */
+}
+
+.buttons-container .forum {
+    animation-delay: 0.6s; /* Troisième bouton, apparaît après 0.6s */
+}
+
+/* Boutons - style de base */
+.animated-btn {
+    background-color: #3498db; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Effet au survol */
+.animated-btn:hover {
+    transform: scale(1.1); /* Agrandir légèrement */
+    background-color: #2980b9; /* Changer la couleur de fond au survol */
+}
+
+/* Animation de fond au clic */
+.animated-btn:active {
+    transform: scale(0.95); /* Réduire légèrement lors du clic */
+}
+
+/* Responsivité : ajuster les boutons sur les petits écrans */
+@media screen and (max-width: 768px) {
+    .buttons-container {
+        flex-direction: column; /* Alignement vertical sur les petits écrans */
+        gap: 10px;
+        padding: 0 20px; /* Ajouter un peu d'espace de chaque côté des boutons */
+    }
+
+    .animated-btn {
+        width: 100%; /* Prendre toute la largeur disponible */
+        font-size: 1rem; /* Taille plus petite du texte */
+        padding: 12px 0; /* Réduire la taille du padding */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .buttons-container {
+        padding: 0 15px; /* Réduire l'espace de padding sur les très petits écrans */
+    }
+
+    .animated-btn {
+        font-size: 0.9rem; /* Réduire encore la taille de la police */
+        padding: 10px 0; /* Padding plus petit */
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        margin-top: 20px;
+    }
+    footer p {
+        padding: 0 4px;
+        font-size: 12px;
+    }
+}
+
+/* About section */
+.about-container p {
+    font-family: 'Verdana', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.about-container p:hover {
+    border-color: #000;
+    background-color: #f9f9f9;
+}
+
+.slogan p{
+    padding-top: 15px;
+    text-align: center;
+}
+.text-describ p{
+    padding-top: 15px;
+   text-align: center;
+}
+
+/* POUR LES LISTES  */
+
+/* Liste avec un design plat et bordure colorée */
+ul.list {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    background-color: #fafafa;
+    font-family: 'Verdana', sans-serif;
+    color: #333;
+}
+
+/* Élément avec bordure colorée et espacement */
+ul.list li {
+    font-size: 16px;
+    padding: 10px;
+    border-left: 5px solid #3498db;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Survol avec une légère animation */
+ul.list li:hover {
+    background-color: #e6f7ff;
+    transform: scale(1.03);
+}
+
+/* Dernier élément sans bordure */
+ul.list li:last-child {
+    margin-bottom: 0;
+}
+
+.subgroup, .site {
+    background-color: white;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 3px solid #3498db;
+}
+
+.subgroup h2, .site h2 {
+    cursor: pointer;
+    text-align: center;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slogan {
+    color:  #3498db;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px;
+}
+span {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px;
+}
+
+/* Icone de la flèche */
+#toggle-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.describ-subgroup, .describ-site {
+    display: none; /* Contenu caché par défaut */
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Transition pour l'animation */
+}
+
+.subgroup .describ-subgroup.show {
+    display: block;
+    opacity: 1;
+}
+
+.subgroup .describ-subgroup.show + h2 #toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Logo des étoiles */
+.logo-subgroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-subgroup img {
+    width: 50%;
+    border-radius: 8px;
+}
+
+/* Card pour chaque chef des étoiles */
+.chef {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.dirigeants {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+/* Card générale */
+.card {
+    background-color: #ffffff; /* Fond blanc pour la carte */
+    width: 100%; /* Par défaut, prend 100% de la largeur de son conteneur */
+    max-width: 320px; /* Taille maximale de la carte */
+    margin: 20px auto; /* Centrer la carte et espacer les cartes */
+    border-radius: 16px; /* Bords légèrement arrondis */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet subtil */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0; /* Bordure légère gris clair pour définir les bords */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+.card-header {
+    text-align: center;
+    background-color: #a6c9e2; /* Bleu clair de fond pour l'en-tête */
+    padding: 20px;
+    position: relative;
+}
+
+.profile-image {
+    width: 120px; /* Taille de l'image */
+    height: 120px;
+    border-radius: 50%; /* Image ronde */
+    object-fit: cover;
+    border: 4px solid white; /* Bordure blanche autour de l'image */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre plus marquée autour de l'image */
+    margin-top: 20px; /* Espacement autour de l'image */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet de zoom au survol de l'image */
+.profile-image:hover {
+    transform: scale(1.1); /* Zoom de l'image */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Ombre plus forte au survol */
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-body h2 {
+    font-size: 24px; /* Taille du titre */
+    color: white;
+    margin-bottom: 8px;
+    text-align: center;
+} 
+
+.card-body p {
+    font-size: 14px; /* Taille du texte */
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.card-footer {
+    padding: 14px;
+    background-color: #f8f8f8; /* Fond clair pour la section pied de page */
+    text-align: center;
+    border-top: 1px solid #e0e0e0; /* Légère bordure en haut du footer */
+    border-radius: 0; /* Suppression du border-radius pour le footer */
+}
+
+.card-footer a {
+    font-size:15px;
+    color: #3498db; /* Bleu pour le bouton */
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: transparent; /* Fond transparent */
+    border-radius: 20%; /* Aucune bordure */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-footer a:hover {
+    background-color: #3498db; /* Fond bleu clair au survol */
+    color: white; /* Texte blanc au survol */
+    border-radius: 20%;
+}
+
+/* =============================== Responsivité =============================== */
+
+/* Pour les écrans très petits (téléphones portables) */
+@media (max-width: 480px) {
+    .card {
+        width: 95%; /* La carte prend presque toute la largeur de l'écran */
+        margin: 10px auto; /* Centrer la carte */
+    }
+
+    .profile-image {
+        width: 90px; /* Réduire la taille de l'image */
+        height: 90px; /* Réduire la taille de l'image */
+    }
+
+    .card-body h2 {
+        font-size: 18px; /* Réduire la taille du titre */
+    }
+
+    .card-body p {
+        font-size: 12px; /* Réduire la taille du texte */
+    }
+
+    .card-footer a {
+        font-size: 12px; /* Réduire la taille du bouton */
+        padding: 8px 16px;
+    }
+}
+
+/* Pour les écrans petits à moyens (tablettes, petites résolutions) */
+@media (max-width: 768px) {
+    .dirigeants {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .card {
+        width: 80%; /* La carte prend 80% de la largeur de l'écran */
+        margin: 15px auto; /* Centrer et espacer */
+    }
+
+    .profile-image {
+        width: 100px; /* Image plus grande */
+        height: 100px; /* Taille de l'image */
+    }
+
+    .card-body h2 {
+        font-size: 22px; /* Taille du titre */
+    }
+
+    .card-body p {
+        font-size: 13px; /* Taille du texte */
+    }
+
+    .card-footer a {
+        font-size: 13px; /* Taille du bouton */
+        padding: 9px 18px;
+    }
+}
+
+/* Pour les écrans moyens à grands (écrans de bureau, tablettes en orientation paysage) */
+@media (max-width: 1024px) {
+    .card {
+        width: 70%; /* La carte prend 70% de la largeur de l'écran */
+    }
+
+    .profile-image {
+        width: 110px; /* Image plus grande */
+        height: 110px;
+    }
+
+    .card-body h2 {
+        font-size: 24px; /* Taille du titre */
+    }
+
+    .card-body p {
+        font-size: 14px; /* Taille du texte */
+    }
+
+    .card-footer a {
+        font-size: 14px; /* Taille du bouton */
+        padding: 10px 20px;
+    }
+}
+
+/* Pour les écrans très larges (ordinateurs de bureau) */
+@media (min-width: 1200px) {
+    .card {
+        width: 320px; /* Taille standard de la carte */
+    }
+
+    .profile-image {
+        width: 120px; /* Taille de l'image */
+        height: 120px;
+    }
+
+    .card-body h2 {
+        font-size: 24px; /* Taille du titre */
+    }
+
+    .card-body p {
+        font-size: 14px; /* Taille du texte */
+    }
+
+    .card-footer a {
+        font-size: 14px; /* Taille du bouton */
+        padding: 10px 20px;
+    }
+}
+
+
+/* Style de la modale */
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed; /* Fixe la position de la modale */
+    z-index: 1; /* Assure que la modale est au-dessus des autres éléments */
+    left: 0;
+    top: 0;
+    width: 100%; /* Prend toute la largeur */
+    height: 100%; /* Prend toute la hauteur */
+    overflow: auto; /* Permet le défilement si nécessaire */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre semi-transparent */
+}
+
+/* Contenu de la modale */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%; /* Taille de l'image dans la modale */
+    padding-top: 100px;
+    max-width: 700px; /* Limite la taille de l'image */
+}
+
+
+/* Légende sous l'image */
+#caption {
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+/* =============================== Responsivité =============================== */
+
+/* Pour les écrans très petits (téléphones portables) */
+@media (max-width: 480px) {
+    .card {
+        width: 90%; /* Réduire la taille de la carte pour les petits écrans */
+        margin: 10px auto;
+    }
+
+    .profile-image {
+        width: 90px; /* Réduire la taille de l'image */
+        height: 90px;
+    }
+
+    /* Réduire la taille du titre h2 dans les sections Winners, The White Angels, etc. */
+    .card-body h2 {
+        font-size: 18px; /* Réduire la taille du titre */
+        width: 90%; /* Réduire la largeur du titre */
+        margin: 0 auto; /* Centrer le titre */
+    }
+
+    /* Ajuster le texte des paragraphes pour qu'ils soient aussi plus petits */
+    .card-body p {
+        font-size: 12px;
+    }
+
+    .card-footer a {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    /* Ajuster la largeur des titres pour qu'ils ne débordent pas dans les petites cartes */
+    .subgroup h2 {
+        font-size: 20px; /* Réduire la taille du titre dans la section des étoiles */
+        width: 90%; /* Réduire la largeur du titre */
+        margin: 0 auto; /* Centrer le titre */
+    }
+
+    .chef h2 {
+        font-size: 20px; /* Réduire la taille du titre pour les chefs */
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+/* Pour les écrans petits à moyens (tablettes, petites résolutions) */
+@media (max-width: 768px) {
+    .dirigeants{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .card {
+        width: 80%; /* La carte prend 80% de la largeur de l'écran */
+        margin: 15px auto; /* Centrer et espacer */
+    }
+
+    .profile-image {
+        width: 100px; /* Image plus grande */
+        height: 100px; /* Taille de l'image */
+    }
+
+    .card-body h2 {
+        font-size: 22px; /* Taille du titre */
+    }
+
+    .card-body p {
+        font-size: 13px; /* Taille du texte */
+    }
+
+    .card-footer a {
+        font-size: 13px; /* Taille du bouton */
+        padding: 9px 18px;
+    }
+}
+/* COMES*/
+h2{
+    text-align: center;
+}
+.comes-text div{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding: 0 15px;
+}
+
+@media (max-width: 700px){
+    .comes-text p{
+        text-align: center;
+    }
+}
+/* LOGIN*/
+/* Centrage vertical + horizontal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 30px;
+  }
+  
+  main h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+    color: #000;
+  }
+  
+ main p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    padding: 0 1rem;
+  }
+  
+  main form {
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  main label{
+    margin-bottom: -8px;
+  }
+  
+  main input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  main input:focus {
+    border-color: #000;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  
+  main footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #777;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  main .btn-login{
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Responsive : Tablette */
+  @media (max-width: 768px) {
+   main h1 {
+      font-size: 2rem;
+    }
+  
+    main form {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    main h1 {
+      font-size: 1.8rem;
+    }
+  
+    main p {
+      font-size: 0.95rem;
+    }
+  
+    main form {
+      padding: 1.2rem;
+    }
+  
+    main input {
+      font-size: 0.95rem;
+      padding: 0.7rem 0.9rem;
+    }
+  
+    main footer {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Très petits écrans */
+  @media (max-width: 360px) {
+    main h1 {
+      font-size: 1.6rem;
+    }
+  
+    main input {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.8rem;
+    }
+  
+    main form {
+      gap: 1rem;
+    }
+  }
+  
