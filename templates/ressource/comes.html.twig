@@ -27,7 +27,7 @@
                             {% for membre in speciality.membres %}
                                 <div class="card">
                                     <div class="card-header">
-                                        <img src="picture/comes/1743639743846.jpg" alt="Photo de profil" class="profile-image" onclick="openModal(this)">
+                                        <img src="{{ asset('/uploads/membre/' ~ membre.photo)}}" alt="Photo de profil" class="profile-image" onclick="openModal(this)">
                                     </div>
                                     <div class="card-body">
                                         <h2> {{membre.firstname}} {{membre.lastname}}</h2>

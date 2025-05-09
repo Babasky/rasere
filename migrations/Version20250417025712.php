@@ -61,7 +61,7 @@ final class Version20250417025712 extends AbstractMigration
             , password VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL)
         SQL);
         $this->addSql(<<<'SQL'
-            INSERT INTO "user" (email, roles, password, firstname, lastname) VALUES ('admin@rasere.com', '["ROLE_ADMIN"]', '$2y$13$v3sMjMkU6Dm3NL6XKDfpC.c0t4Hh79xDpiZcM3Coxb2Bzo06T6/j2', 'Admin', 'Admin')
+            INSERT INTO "user" (email, roles, password, firstname, lastname) VALUES ('admin@rasere.com', '["ROLE_ADMIN"]', '$2y$13$mx7GkMY72RiNzZ.oNUj.Q.wAM65lgPFaCATDlPXzOtAM83QOncurG', 'Admin', 'Admin')
         SQL);
         $this->addSql(<<<'SQL'
             CREATE UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL ON "user" (email)
