@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Forum{% endblock %}
+
+{% block header %}
+    {% include "_partials/header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+    <section class="forum-image">
+        <h2>Images de la Journée Raserienne</h2>
+        <div class="defil-images">
+            {% for forumItem in forum %}
+                {% for image in forumItem.photos %}
+                    <div><img src="{{ asset('uploads/forum/' ~ image) }}" alt="Image {{ loop.index }}"></div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
-use App\Repository\AccueilRepository;
-use App\Repository\CoordinateurRepository;
-use App\Repository\RessourceRepository;
-use App\Repository\SecretaireGeneralRepository;
 use App\Repository\SiteRepository;
-use App\Repository\SpecialiteRepository;
+use App\Repository\ForumRepository;
+use App\Repository\AccueilRepository;
 use App\Repository\SubgroupRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\RessourceRepository;
+use App\Repository\SpecialiteRepository;
+use App\Repository\CoordinateurRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\SecretaireGeneralRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class HomeController extends AbstractController
 {
@@ -57,6 +58,16 @@ final class HomeController extends AbstractController
         return $this->render('ressource/comes.html.twig',[
             'ressource' => $ressource->findAll()[0]?? null,
             'specialities' => $specialities,
+        ]);
+    }
+
+    #[Route('/forum', name:'app_forum')]
+    public function forum(ForumRepository $forumRepository):Response
+    {
+        $forum = $forumRepository->findAll();
+        //dd($forum);
+        return $this->render('home/forum.html.twig',[
+            'forum' => $forum,
         ]);
     }
 }

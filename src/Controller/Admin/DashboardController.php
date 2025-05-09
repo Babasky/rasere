@@ -4,14 +4,16 @@ namespace App\Controller\Admin;
 
 use App\Entity\Site;
 use App\Entity\User;
+use App\Entity\Forum;
 use App\Entity\Membre;
 use App\Entity\Accueil;
 use App\Entity\Subgroup;
-use App\Entity\Responsite;
-use App\Entity\Coordinateur;
 use App\Entity\Ressource;
-use App\Entity\SecretaireGeneral;
+use App\Entity\Responsite;
 use App\Entity\Specialite;
+use App\Entity\Coordinateur;
+use App\Entity\SecretaireGeneral;
+use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -65,6 +67,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Responsables', 'fas fa-users', Responsite::class);
         yield MenuItem::linkToCrud('Ressources', 'fa fa-list', Ressource::class);
         yield MenuItem::linkToCrud('Spécialités', 'fa fa-list', Specialite::class);
+        yield MenuItem::linkToCrud('Forum', 'fa fa-list', Forum::class);
 
     }
 }
