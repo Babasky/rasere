@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Accueil;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -31,10 +32,38 @@ class AccueilCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextEditorField::new('title')->setLabel("Le titre"),
+            TextField::new('title')->setLabel("Le titre")->setFormTypeOptions([
+                'attr' => [
+                    'placeholder' => 'Entrez le titre ici',
+                    'class' => 'text'
+                ]
+            ]),
             TextEditorField::new('description')->setLabel("Description"),
             TextField::new('slogan')->setLabel("Le Slogan")
         ];
     }
-    
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if ($entityInstance instanceof Accueil) {
+            $description = $entityInstance->getDescription();
+            $description = preg_replace('/<div(?![^>]*class=)/i', '<div class="text"', $description);
+            $entityInstance->setDescription($description);
+        }
+
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+
+public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if ($entityInstance instanceof Accueil) {
+            $description = $entityInstance->getDescription();
+            $description = preg_replace('/<div(?![^>]*class=)/i', '<div class="text"', $description);
+            $entityInstance->setDescription($description);
+        }
+
+        parent::updateEntity($entityManager, $entityInstance);
+        
+    }
+
 }
