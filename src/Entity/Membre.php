@@ -35,7 +35,7 @@ class Membre
     private ?string $photo = null;
 
     #[ORM\ManyToOne(inversedBy: 'membres')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Subgroup $subgroup = null;
 
     #[ORM\ManyToOne(inversedBy: 'membres')]
