@@ -8,25 +8,23 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     libzip-dev \
     zip \
+    wget \
     && docker-php-ext-install pdo pdo_sqlite zip
+
+# Installer Symfony CLI (pour les scripts auto de Flex)
+RUN wget https://get.symfony.com/cli/installer -O - | bash && \
+    mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 # Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
-# Définir le dossier de travail
+
 WORKDIR /app
 
-# Copier les fichiers du projet
 COPY . .
 
-# Installer les dépendances PHP sans dev et optimiser l'autoloader
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-interaction --no-dev --optimize-autoloader
 
-# Exposer le port par défaut du serveur web PHP
 EXPOSE 8000
 
-# Commande de démarrage
 CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
-
-
-RUN php bin/console doctrine:schema:create --no-interaction
