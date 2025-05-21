@@ -22,8 +22,6 @@ COPY . .
 # Installer les dépendances PHP sans dev et optimiser l'autoloader
 RUN composer install --no-dev --optimize-autoloader
 
-RUN mkdir -p var && chmod -R 775 var && chown -R www-data:www-data var
-
 # Exposer le port par défaut du serveur web PHP
 EXPOSE 8000
 
