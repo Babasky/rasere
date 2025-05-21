@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: symfony-sqlite
+    env: docker
+    plan: free
+    repo: https://github.com/ton-utilisateur/ton-projet.git
+    branch: main
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: APP_SECRET
+        generateValue: true
