@@ -1,19 +1,32 @@
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git unzip zip sqlite3 libsqlite3-dev libpng-dev libonig-dev libxml2-dev curl \
-    && docker-php-ext-install pdo pdo_sqlite mbstring exif pcntl bcmath gd
+    unzip \
+    git \
+    sqlite3 \
+    libsqlite3-dev \
+    libzip-dev \
+    zip \
+    && docker-php-ext-install pdo pdo_sqlite zip
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Installer Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Définir le dossier de travail
 WORKDIR /app
 
+# Copier les fichiers du projet
 COPY . .
 
+# Installer les dépendances PHP sans dev et optimiser l'autoloader
 RUN composer install --no-dev --optimize-autoloader
 
-RUN mkdir -p var && chmod -R 775 var && chown -R www-data:www-data var
+# Exposer le port par défaut du serveur web PHP
+EXPOSE 8000
 
+# Commande de démarrage
 CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+
 
 RUN php bin/console doctrine:schema:create --no-interaction
