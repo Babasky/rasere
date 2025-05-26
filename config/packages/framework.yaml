@@ -3,7 +3,7 @@ framework:
     secret: '%env(APP_SECRET)%'
     trusted_proxies: '127.0.0.1,REMOTE_ADDR'
     trusted_hosts: ~
-    csrf_protection: false
+    csrf_protection: true
     session: true
 
     #esi: true
