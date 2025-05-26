@@ -4,7 +4,6 @@ framework:
     trusted_proxies: '127.0.0.1,REMOTE_ADDR'
     trusted_hosts: ~
     csrf_protection: false
-    # Note that the session will be started ONLY if you read or write from it.
     session: true
 
     #esi: true
