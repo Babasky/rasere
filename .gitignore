@@ -23,7 +23,6 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
-/public/uploads/forum/*
 /public/uploads/membre/*
 /public/uploads/subgroup/*
 /public/uploads/responsite/*

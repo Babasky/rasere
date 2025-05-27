@@ -10,8 +10,10 @@
     <section class="forum-image">
         <h2>Images de la Journée Raserienne</h2>
         <div class="defil-images">
-            {% for image in forum %}
-                    <div><img src="{{ asset('uploads/forum/' ~ image.photo) }}" alt="Image {{ loop.index }}"></div>
+            {% for formItem in forum %}
+                {% for image in formItem.photos %}
+                    <div><img src="{{ asset('uploads/forum/' ~ image) }}" alt="Image {{ loop.index }}"></div>
+                {% endfor %}
             {% endfor %}
         </div>
     </section>

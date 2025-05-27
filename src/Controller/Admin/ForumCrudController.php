@@ -23,13 +23,14 @@ class ForumCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             ImageField::new('photo', 'Images')
             ->setFormTypeOptions([
+                'multiple' => true,
                 'attr' =>[
                     'accept'=> 'image/*'
                 ]
             ])
             ->setBasePath('uploads/forum')
-            ->setUploadDir('public/uploads/forum'),
-           
+            ->setUploadDir('public/uploads/forum')
+            ->setUploadedFileNamePattern('[randomhash].[extension]'),
         ];
     }
 }

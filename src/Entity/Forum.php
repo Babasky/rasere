@@ -14,8 +14,9 @@ class Forum
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $photo = null;
+    #[ORM\Column]
+    private array $photos = [];
+
 
    
     public function getId(): ?int
@@ -23,16 +24,17 @@ class Forum
         return $this->id;
     }
 
-    public function getPhoto(): ?string
+    public function getPhotos(): array
     {
-        return $this->photo;
+        return $this->photos;
     }
 
-    public function setPhoto(string $photo): static
+    public function setPhotos(array $photos): static
     {
-        $this->photo = $photo;
+        $this->photos = $photos;
 
         return $this;
     }
 
+   
 }
