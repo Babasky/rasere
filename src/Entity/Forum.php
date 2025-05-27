@@ -14,7 +14,7 @@ class Forum
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column()]
     private array $photos = [];
 
     public function getId(): ?int
