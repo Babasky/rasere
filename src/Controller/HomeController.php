@@ -65,7 +65,6 @@ final class HomeController extends AbstractController
     public function forum(ForumRepository $forumRepository):Response
     {
         $forum = $forumRepository->findAll();
-        //dd($forum);
         return $this->render('home/forum.html.twig',[
             'forum' => $forum,
         ]);

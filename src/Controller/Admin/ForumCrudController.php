@@ -21,9 +21,8 @@ class ForumCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            ImageField::new('photos', 'Images')
+            ImageField::new('photo', 'Images')
             ->setFormTypeOptions([
-                "multiple"=> true,
                 'attr' =>[
                     'accept'=> 'image/*'
                 ]
