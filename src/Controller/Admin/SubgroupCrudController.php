@@ -40,7 +40,7 @@ class SubgroupCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads/subgroup')
                 ->setUploadedFileNamePattern('[randomhash].[extension]'),
             TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
         ];
     }
     

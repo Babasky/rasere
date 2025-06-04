@@ -38,7 +38,7 @@ class AccueilCrudController extends AbstractCrudController
                     'class' => 'text'
                 ]
             ]),
-            TextEditorField::new('description')->setLabel("Description"),
+            TextField::new('description')->setLabel("Description"),
             TextField::new('slogan')->setLabel("Le Slogan")
         ];
     }
