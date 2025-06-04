@@ -33,7 +33,6 @@
 		<ul class="list">
 			{% for secretaire in secretaires %}
 				<li>{{ secretaire.year }}: {{ secretaire.name }}</li>
-				
 			{% endfor %}
 		</ul>
 		<p>
@@ -71,11 +70,8 @@
 					<div class="logo-subgroup">
 						<img src="{{ asset('/uploads/subgroup/' ~ subgroup.logo) }}" alt="Logo de la Coordination">
 					</div>
-					<div class="text-describ">
-						<p>
-							{{ subgroup.description|raw }}
-						</p>
-					</div>
+				
+					{{ subgroup.description|raw }}
 
 					<div class="dirigeants">
 						<div class="chef">
@@ -155,9 +151,7 @@
 					{{ site.name }}<span id="toggle-icon-{{ loop.index + 7 }}">&#x2193;</span>
 				</h2>
 				<div class="describ-subgroup" id="describ-subgroup-{{ loop.index + 7 }}">
-					<div class="text-describ">
-						<p> {{ site.description | raw }} </p>
-					</div>
+					{{ site.description | raw }}
 					<div class="dirigeants">
 						<div class="chef">
 							{% if site.resposites is defined and site.resposites is not empty %}

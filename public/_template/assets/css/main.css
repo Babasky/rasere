@@ -340,6 +340,8 @@ header h1 {
     line-height: 1.7rem;
     font-size: 1.2rem;
     padding-top: 0px;
+    text-align: justify;
+    padding: 0 25px; /* Ajout de padding pour un meilleur espacement */
 }
 
 /* Responsivité pour tablettes et petits écrans */
@@ -365,7 +367,6 @@ header h1 {
     }
     .text {
         line-height: 1.2em;
-        padding: 0 3px;
     }
 }
 
@@ -514,9 +515,9 @@ footer {
     padding-top: 15px;
     text-align: center;
 }
-.text-describ p{
+.text-describ{
     padding-top: 15px;
-   text-align: center;
+    text-align: center;
 }
 
 /* POUR LES LISTES  */
@@ -611,6 +612,7 @@ span {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .logo-subgroup img {
